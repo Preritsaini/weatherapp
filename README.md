@@ -72,3 +72,5 @@ Made with ❤️ by Prerit Saini
 ![](screenshots/screen1.png)
 
 
+link for the demo vide https://vimeo.com/1073409907/348cd7f815?share=copy
+link for the demo apk https://drive.google.com/file/d/1HDu6qppR6UxH_7rQCIx2xR-WnvISHk4J/view?usp=sharing
