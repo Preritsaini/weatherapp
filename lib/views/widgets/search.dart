@@ -3,26 +3,40 @@ import 'package:get/get.dart';
 import '../../controllers/weather_controller.dart';
 
 class SearchBar extends StatelessWidget {
-  final controller = Get.find<WeatherController>();
-  final textController = TextEditingController();
+  final WeatherController controller = Get.find<WeatherController>();
+  final TextEditingController textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: textController,
-      decoration: InputDecoration(
-        hintText: "Enter city name",
-        suffixIcon: IconButton(
-          icon: Icon(Icons.search,color: Colors.black,),
-          onPressed: () {
-            controller.fetchWeather(textController.text);
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Form(
+        child: TextFormField(
+          controller: textController,
+          decoration: InputDecoration(
+            hintText: "Enter city name",
+            suffixIcon: IconButton(
+              icon: const Icon(Icons.search, color: Colors.black),
+              onPressed: () {
+                final city = textController.text.trim();
+                if (city.isNotEmpty) {
+                  controller.fetchWeather(city);
+                }
+              },
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            filled: true,
+            fillColor: Colors.white,
+          ),
+          onFieldSubmitted: (value) {
+            if (value.trim().isNotEmpty) {
+              controller.fetchWeather(value.trim());
+            }
           },
         ),
-        border: OutlineInputBorder(),
       ),
-      onSubmitted: (value) {
-        controller.fetchWeather(value);
-      },
     );
   }
 }
